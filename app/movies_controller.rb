@@ -23,9 +23,9 @@ def can_be_created_with_a_hash_of_attributes
   movie
 end
 
-def can_be_created_in_a_block(args = __)
-  Movie.create do |m|
-    __
+def can_be_created_in_a_block(args = {})
+  args.each do |key, value|
+    Movie.find_or_create_by(key: value)
   end
 end
 
